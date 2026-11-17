@@ -1,0 +1,14 @@
+$ python -m lab9.check_sources
+{
+  "protected_starter_files": 23,
+  "protected_day08_files": 62,
+  "day08_repository": "https://github.com/VinUni-AI20k/K5-Day8-From-Workflows-to-Agents",
+  "day08_commit": "034c6c421c198dae67a9211d15e2587d5a378972",
+  "day09_starter_commit": "d1b9471540727d693c9eb392667b9f0d8a998bf5",
+  "changed_paths_scanned": 153,
+  "tracked_paths_scanned": 177,
+  "errors": [],
+  "scope": "source boundary and common credential patterns; not a proof of no vulnerabilities"
+}
+
+exit_code=0

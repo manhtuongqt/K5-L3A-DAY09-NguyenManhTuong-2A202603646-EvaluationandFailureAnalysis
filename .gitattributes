@@ -1,0 +1,10 @@
+# Keep fixtures byte-identical on every OS (Windows autocrlf would rewrite them).
+* text=auto eol=lf
+*.sqlite binary
+*.png binary
+*.pdf binary
+# Preserve bytes of generated evidence and its recorded SHA256 on Windows.
+src/reports/*.json -text whitespace=cr-at-eol
+src/data/eval/eval_set_v*.jsonl text eol=lf
+# Raw command output may intentionally end mid-line with whitespace.
+docs/evidence/day09/*.txt whitespace=-blank-at-eol

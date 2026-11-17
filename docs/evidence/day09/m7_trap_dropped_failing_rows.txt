@@ -1,0 +1,12 @@
+$ python -m lab9.gate --pr reports/traps/dropped_failing_rows.json --baseline reports/baseline_v2.json --spec config/metric_spec_v2.yaml
+gate: PR E-slice_regression-20261117-67dc vs main E-swarm-20261117-67dc · eval set 67dc2eec100f
+  INTEGRITY PR: row count differs from manifest
+  INTEGRITY PR: nonfinite/missing metric pass_at_3
+  INTEGRITY PR: nonfinite/missing metric pass_hat_3
+  INTEGRITY PR: nonfinite/missing metric pass_at_5
+  INTEGRITY PR: nonfinite/missing metric pass_hat_5
+  INTEGRITY PR: incomplete item x seed grid
+  INTEGRITY PR/baseline item x seed set differs
+exit 1 — blocked: integrity
+
+exit_code=1

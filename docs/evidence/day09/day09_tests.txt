@@ -1,0 +1,5 @@
+$ python -m pytest -q -m student -o addopts= -k lab9
+...................................................................      [100%]
+67 passed, 305 deselected in 9.06s
+
+exit_code=0

@@ -1,0 +1,32 @@
+$ python -m lab9.gate --pr reports/traps/evaluator_errors_as_nan.json --baseline reports/baseline_v2.json --spec config/metric_spec_v2.yaml
+gate: PR E-slice_regression-20261117-67dc vs main E-swarm-20261117-67dc · eval set 67dc2eec100f
+  INTEGRITY PR: invalid grader value E-014@11/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-014@11/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-014@11/pass_rate
+  INTEGRITY PR: invalid grader value E-014@33/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-014@33/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-014@33/pass_rate
+  INTEGRITY PR: invalid grader value E-014@55/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-014@55/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-014@55/pass_rate
+  INTEGRITY PR: invalid grader value E-105@11/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-105@11/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-105@11/pass_rate
+  INTEGRITY PR: invalid grader value E-105@33/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-105@33/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-105@33/pass_rate
+  INTEGRITY PR: invalid grader value E-105@55/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-105@55/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-105@55/pass_rate
+  INTEGRITY PR: invalid grader value E-106@11/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-106@11/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-106@11/pass_rate
+  INTEGRITY PR: invalid grader value E-106@33/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-106@33/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-106@33/pass_rate
+  INTEGRITY PR: invalid grader value E-106@55/refund_amount_correct
+  INTEGRITY PR: invalid grader value E-106@55/proposal_amount_correct
+  INTEGRITY PR: invalid grader value E-106@55/pass_rate
+exit 1 — blocked: integrity
+
+exit_code=1

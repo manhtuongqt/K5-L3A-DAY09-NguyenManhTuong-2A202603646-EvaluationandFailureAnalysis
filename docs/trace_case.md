@@ -1,30 +1,27 @@
-# Trace case: từ trace tới quyết định sai đầu tiên
+# Trace case — bước sai đầu tiên
 
-Một trace case trả lời một câu: **bước nào là bước sai đầu tiên**, và test nào sẽ bắt được nó lần sau.
-
-```bash
-cd src
-python -m lab9.trace_case --shape seeded_regression --claim C-002 --seed 11
-python -m lab9.trace_case --shape fixed --claim C-002 --seed 11   # đối chứng
-```
-
-Lệnh in ra ba phần: các event trong trace (`reply`, `decision`, `model_override`, `error` …), ledger so với nhãn, và lý do của grader Lab 8.
-
-## Mẫu điền (mỗi nhóm 1 case, lấy từ trial đang fail trong report)
-
-| Trường | Nội dung |
+| Trường | Bằng chứng thực |
 |---|---|
-| Trial | `<shape> <claim>@<seed>`, run ID trong report |
-| Triệu chứng | Grader nào fail; reply nói gì so với ledger ghi gì |
-| Bước sai đầu tiên | Số thứ tự event + kind + trích payload (≤1 dòng) |
-| Vì sao là bước *đầu tiên* | Các bước trước đó đúng ra sao (dẫn số event) |
-| Failure mode | Mã FM-xx trong `docs/failure_taxonomy.md` |
-| Đối chứng | Cùng claim@seed trên shape `fixed`: bước đó khác thế nào |
-| Regression test | Tên test + grader/assert nào bắt được; đã thấy fail trên variant lỗi và pass trên `fixed` chưa |
-| Chưa chắc chắn | Điều trace không chứng minh được |
+| Trial | seeded_regression C-002@11; thuộc run E-seeded_regression-20261117-2720 |
+| Triệu chứng | status resolved thay vì denied; ledger=20.000đ, nhãn=0; reply nói đã hoàn 20.000đ |
+| Bước sai đầu tiên | Event 3, model_override, payload {"delay_days":5} |
+| Vì sao đầu tiên | Event 1 handoff chỉ công cụ read-only; event 2 investigator đọc DB đúng delay_days=2. Event 3 mới thay sự thật DB bằng ticket |
+| Failure mode | FM-03 ticket_trust; không gọi đây là approval bypass vì approval hợp lệ nhưng điều kiện nghiệp vụ không có |
+| Hậu quả | Event 4 quote sai 20.000đ; event 5 history=0; event 6 reply. Host kiểm approval/idempotency, không thay thế kiểm entitlement |
+| Đối chứng | fixed C-002@11 giữ DB=2, event 3 quote=0, event 4 reply từ chối, ledger=0, TrialPass=true |
+| Regression test | tests/test_lab9_contract_extra.py::test_lab9_first_wrong_step_regression |
+| Chưa chắc chắn | Trace cho biết dữ liệu bị thay ở event 3, không chứng minh suy nghĩ bên trong model hay tần suất trên model thật |
 
-## Quy tắc
+Lệnh tái lập, chạy từ src/:
 
-- Đọc **ledger trước reply**: reply trôi chảy vẫn có thể đi kèm một khoản hoàn sai.
-- "Bước sai đầu tiên" phải dẫn số event cụ thể, không phải "agent bị nhầm".
-- Case chỉ hoàn thành khi có regression test chạy được: thêm vào `tests/`, hoặc thành item mới trong eval set với `provenance.from_trace`.
+- python -m lab9.trace_case --shape seeded_regression --claim C-002 --seed 11
+- python -m lab9.trace_case --shape fixed --claim C-002 --seed 11
+- python -m pytest -q -o addopts= tests/test_lab9_contract_extra.py -k first_wrong_step
+
+Output thật: [variant](evidence/day09/trace_C002_seeded_regression.txt), [đối chứng](evidence/day09/trace_C002_fixed.txt).
+
+## Một lỗi bị grader ban đầu bỏ sót
+
+Lượt M3 đầu đạt detection 75%, false alarm 0%: [log lịch sử trước khi chuyển về fork cá nhân](evidence/day09/m3_detection_before.txt). C-013 bị pre_deducted đưa proposal về 0; ledger=0 vẫn khớp nhãn, nên chỉ chấm ledger chưa giải thích được lỗi proposal/policy_denied.
+
+Tôi thêm ProposalAmountCorrect để so proposal với nhãn. Đây là metric chẩn đoán code, không dùng lại pass_rate làm lời giải thích vòng tròn và không sửa agent. Lượt sau detection=100%, false alarm=0%: [log sau](evidence/day09/m3_detection.txt). Metric FM-08 riêng vẫn blocking để bắt reply sai dù TrialPass Day08 có thể PASS.

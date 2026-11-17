@@ -1,0 +1,4 @@
+$ python -m lab9.evalset --check
+eval set 2720d20ea159: 0 problem(s)
+
+exit_code=0

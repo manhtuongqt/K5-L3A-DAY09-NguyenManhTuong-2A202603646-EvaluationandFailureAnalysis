@@ -1,0 +1,280 @@
+{
+  "phase": "core",
+  "commands": [
+    {
+      "name": "m0_smoke",
+      "argv": [
+        "-m",
+        "lab9.smoke"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m1_evalset_v1",
+      "argv": [
+        "-m",
+        "lab9.evalset",
+        "--build",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "core_tests",
+      "argv": [
+        "-m",
+        "pytest",
+        "-q",
+        "-m",
+        "student",
+        "-o",
+        "addopts=",
+        "-k",
+        "lab9 and not advanced"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "evalset_cli_tests",
+      "argv": [
+        "-m",
+        "pytest",
+        "-q",
+        "-o",
+        "addopts=",
+        "tests/test_lab9_evalset.py"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m2_tone",
+      "argv": [
+        "-m",
+        "lab9.judge",
+        "--csv",
+        "data/eval/judge_tone_public.csv",
+        "--audit",
+        "10"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m2_helpful",
+      "argv": [
+        "-m",
+        "lab9.judge",
+        "--csv",
+        "data/eval/judge_helpful_public.csv",
+        "--audit",
+        "5"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "name": "trace_C002_seeded_regression",
+      "argv": [
+        "-m",
+        "lab9.trace_case",
+        "--shape",
+        "seeded_regression",
+        "--claim",
+        "C-002",
+        "--seed",
+        "11"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "trace_C002_fixed",
+      "argv": [
+        "-m",
+        "lab9.trace_case",
+        "--shape",
+        "fixed",
+        "--claim",
+        "C-002",
+        "--seed",
+        "11"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m3_detection",
+      "argv": [
+        "-m",
+        "lab9.mutation",
+        "--detect"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "eval_baseline_v1",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "swarm",
+        "--spec",
+        "config/metric_spec.yaml",
+        "--out",
+        "reports/baseline_v1.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "eval_eval_fixed",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "fixed",
+        "--spec",
+        "config/metric_spec.yaml",
+        "--out",
+        "reports/eval_fixed.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "eval_eval_seeded_regression",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "seeded_regression",
+        "--spec",
+        "config/metric_spec.yaml",
+        "--out",
+        "reports/eval_seeded_regression.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "eval_eval_pr",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "swarm",
+        "--spec",
+        "config/metric_spec.yaml",
+        "--out",
+        "reports/eval_pr.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m4_gate_fixed",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/eval_fixed.json",
+        "--baseline",
+        "reports/baseline_v1.json",
+        "--spec",
+        "config/metric_spec.yaml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m4_gate_seeded_regression",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/eval_seeded_regression.json",
+        "--baseline",
+        "reports/baseline_v1.json",
+        "--spec",
+        "config/metric_spec.yaml"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "name": "m4_gate_pr",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/eval_pr.json",
+        "--baseline",
+        "reports/baseline_v1.json",
+        "--spec",
+        "config/metric_spec.yaml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m4_baseline_self",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/baseline_v1.json",
+        "--baseline",
+        "reports/baseline_v1.json",
+        "--spec",
+        "config/metric_spec.yaml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m4_ci_check",
+      "argv": [
+        "-m",
+        "lab9.ci_check",
+        "--pr",
+        "reports/eval_pr.json",
+        "--baseline",
+        "reports/baseline_v1.json",
+        "--spec",
+        "config/metric_spec.yaml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifacts": {
+    "reports\\baseline_v1.json": "ab81f951666445800b460c49cef5f36930435b6f12ddf26df2bd1081ac2382dd",
+    "reports\\eval_fixed.json": "600386557104743edab500e06d1096873db2236aa84dd0ab546781ffac8dafd3",
+    "reports\\eval_pr.json": "ab81f951666445800b460c49cef5f36930435b6f12ddf26df2bd1081ac2382dd",
+    "reports\\eval_seeded_regression.json": "3feac3717b2969ca1be429b866371a2c8de6400875f5d78d8771307e2804505f"
+  }
+}

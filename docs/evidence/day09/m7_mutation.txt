@@ -1,0 +1,9 @@
+$ python -m lab9.mutation --spec config/metric_spec_v2.yaml --baseline reports/baseline_v2.json
+  fixed                expect merge got merge ok          
+  honest_refactor      expect merge got merge ok          
+  seeded_regression    expect block got block ok          refund_amount_correct, pass_rate, pass_hat_5, reply_ledger_consistent, slice:denial/pass_rate, slice:money_movement/pass_rate, slice:adversarial/pass_rate
+  slice_regression     expect block got block ok          slice:money_movement/pass_rate
+  flaky_regression     expect block got block ok          pass_rate, pass_hat_5, slice:money_movement/pass_rate
+mutation score 3/3 · false alarms 0
+
+exit_code=0

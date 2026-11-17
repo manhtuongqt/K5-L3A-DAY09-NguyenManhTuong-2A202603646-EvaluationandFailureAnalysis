@@ -1,0 +1,78 @@
+{
+  "phase": "final",
+  "commands": [
+    {
+      "name": "host_tests",
+      "argv": [
+        "-m",
+        "pytest",
+        "-q"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "day09_tests",
+      "argv": [
+        "-m",
+        "pytest",
+        "-q",
+        "-m",
+        "student",
+        "-o",
+        "addopts=",
+        "-k",
+        "lab9"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "final_v1",
+      "argv": [
+        "-m",
+        "lab9.evalset",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "final_v2",
+      "argv": [
+        "-m",
+        "lab9.evalset",
+        "--v2",
+        "--check"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "final_smoke",
+      "argv": [
+        "-m",
+        "lab9.smoke"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifacts": {
+    "reports\\baseline_v1.json": "ab81f951666445800b460c49cef5f36930435b6f12ddf26df2bd1081ac2382dd",
+    "reports\\baseline_v2.json": "6c01afa2ea1d5b3bdec0ccd61a53b0ab9014778e3d7c700e72bca6416db7b05b",
+    "reports\\eval_fixed.json": "600386557104743edab500e06d1096873db2236aa84dd0ab546781ffac8dafd3",
+    "reports\\eval_fixed_v2.json": "552ba41f4e4418eeb56a1ddb5285d3629319fb69c9f7579a8e3441dfdf2b7628",
+    "reports\\eval_flaky_regression_v2.json": "46c1837569f6faacc968af23d8788532743091f36a625a00f2e54712f0926d2f",
+    "reports\\eval_honest_refactor_v2.json": "8d3dda967c6d26af12b2b0dc7e0d80e28aef0a7ae99f4b1b5c82634a946aa9f3",
+    "reports\\eval_seeded_regression.json": "3feac3717b2969ca1be429b866371a2c8de6400875f5d78d8771307e2804505f",
+    "reports\\eval_seeded_regression_v2.json": "d71c01609209d5fa33493042f5c959610b4af4dd0dfdbbb6618b998a81b6f1f7",
+    "reports\\eval_slice_regression_v2.json": "286b8d20c586281a8957a516c0059cf87423d5ea5665b83d8eaa2337759b695d"
+  }
+}
