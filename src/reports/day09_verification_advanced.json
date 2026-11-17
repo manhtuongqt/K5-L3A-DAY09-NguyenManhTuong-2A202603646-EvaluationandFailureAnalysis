@@ -1,0 +1,347 @@
+{
+  "phase": "advanced",
+  "commands": [
+    {
+      "name": "m5_evalset_v2",
+      "argv": [
+        "-m",
+        "lab9.evalset",
+        "--v2",
+        "--build"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "advanced_tests",
+      "argv": [
+        "-m",
+        "pytest",
+        "-q",
+        "-m",
+        "student",
+        "-o",
+        "addopts=",
+        "-k",
+        "advanced"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m6_aa",
+      "argv": [
+        "-m",
+        "lab9.mutation",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--aa",
+        "66,77,88,99,110"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "eval_baseline_v2",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "swarm",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--out",
+        "reports/baseline_v2.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "eval_eval_fixed_v2",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "fixed",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--out",
+        "reports/eval_fixed_v2.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "v2_gate_fixed",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/eval_fixed_v2.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "eval_eval_honest_refactor_v2",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "honest_refactor",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--out",
+        "reports/eval_honest_refactor_v2.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "v2_gate_honest_refactor",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/eval_honest_refactor_v2.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "eval_eval_seeded_regression_v2",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "seeded_regression",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--out",
+        "reports/eval_seeded_regression_v2.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "v2_gate_seeded_regression",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/eval_seeded_regression_v2.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "name": "eval_eval_slice_regression_v2",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "slice_regression",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--out",
+        "reports/eval_slice_regression_v2.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "v2_gate_slice_regression",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/eval_slice_regression_v2.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "name": "eval_eval_flaky_regression_v2",
+      "argv": [
+        "-m",
+        "lab9.eval",
+        "--shape",
+        "flaky_regression",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--out",
+        "reports/eval_flaky_regression_v2.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "v2_gate_flaky_regression",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/eval_flaky_regression_v2.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "name": "v2_baseline_self",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/baseline_v2.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m7_mutation",
+      "argv": [
+        "-m",
+        "lab9.mutation",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--baseline",
+        "reports/baseline_v2.json"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m7_traps",
+      "argv": [
+        "-m",
+        "lab9.traps",
+        "--pr",
+        "reports/eval_slice_regression_v2.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 0,
+      "exit_code": 0,
+      "passed": true
+    },
+    {
+      "name": "m7_trap_evaluator_errors_as_nan",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/traps/evaluator_errors_as_nan.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "name": "m7_trap_dropped_failing_rows",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/traps/dropped_failing_rows.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "name": "m7_trap_cherry_picked_seeds",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/traps/cherry_picked_seeds.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    },
+    {
+      "name": "m7_trap_loosened_spec",
+      "argv": [
+        "-m",
+        "lab9.gate",
+        "--pr",
+        "reports/traps/loosened_spec.json",
+        "--baseline",
+        "reports/baseline_v2.json",
+        "--spec",
+        "config/metric_spec_v2.yaml",
+        "--spec",
+        "reports/traps/loosened_spec.spec.yaml",
+        "--base-spec",
+        "config/metric_spec_v2.yaml"
+      ],
+      "expected_exit": 1,
+      "exit_code": 1,
+      "passed": true
+    }
+  ],
+  "passed": true,
+  "artifacts": {
+    "reports\\baseline_v2.json": "6c01afa2ea1d5b3bdec0ccd61a53b0ab9014778e3d7c700e72bca6416db7b05b",
+    "reports\\eval_fixed_v2.json": "552ba41f4e4418eeb56a1ddb5285d3629319fb69c9f7579a8e3441dfdf2b7628",
+    "reports\\eval_flaky_regression_v2.json": "46c1837569f6faacc968af23d8788532743091f36a625a00f2e54712f0926d2f",
+    "reports\\eval_honest_refactor_v2.json": "8d3dda967c6d26af12b2b0dc7e0d80e28aef0a7ae99f4b1b5c82634a946aa9f3",
+    "reports\\eval_seeded_regression_v2.json": "d71c01609209d5fa33493042f5c959610b4af4dd0dfdbbb6618b998a81b6f1f7",
+    "reports\\eval_slice_regression_v2.json": "286b8d20c586281a8957a516c0059cf87423d5ea5665b83d8eaa2337759b695d"
+  }
+}

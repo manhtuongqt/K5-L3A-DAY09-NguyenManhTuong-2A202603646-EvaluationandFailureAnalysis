@@ -1,0 +1,36 @@
+name: day09-contract-and-integrity
+on: [pull_request, workflow_dispatch]
+permissions: {contents: read}
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      PYTHONUTF8: "1"
+      BASE_SHA: "${{ github.event.pull_request.base.sha || github.sha }}"
+    defaults: {run: {working-directory: src}}
+    steps:
+      - uses: actions/checkout@v7
+        with: {fetch-depth: 0, persist-credentials: false}
+      - uses: astral-sh/setup-uv@68559e99cc807c1eb7e9238fd43a15bba460eec2
+        with: {python-version: "3.13", activate-environment: true, enable-cache: true, cache-dependency-glob: "src/requirements*.txt"}
+      - run: uv pip install -r requirements.txt -r requirements-lab9.txt
+      - name: Protected sources and common credential patterns
+        run: python -m lab9.check_sources
+      - name: Original host tests, Day09 tests and CLI contracts
+        run: |
+          python -m pytest -q
+          python -m pytest -q -m student -o addopts= -k lab9
+      - name: Check spec ratchet against the PR base
+        shell: bash
+        run: |
+          git show "$BASE_SHA:src/config/metric_spec.yaml" > config/_base_spec_v1.yaml
+          git show "$BASE_SHA:src/config/metric_spec_v2.yaml" > config/_base_spec_v2.yaml
+          python -m lab9.gate --pr reports/baseline_v1.json --baseline reports/baseline_v1.json --spec config/metric_spec.yaml --base-spec config/_base_spec_v1.yaml
+          python -m lab9.gate --pr reports/baseline_v2.json --baseline reports/baseline_v2.json --spec config/metric_spec_v2.yaml --base-spec config/_base_spec_v2.yaml
+      - name: Fresh v2 swarm agrees with committed baseline
+        run: |
+          python -m lab9.eval --shape swarm --spec config/metric_spec_v2.yaml --out reports/ci_swarm_v2.json
+          python -m lab9.compare_reports --actual reports/ci_swarm_v2.json --baseline reports/baseline_v2.json
+      - name: Public traps cannot pass the gate
+        run: python -m lab9.traps --pr reports/eval_slice_regression_v2.json --baseline reports/baseline_v2.json --spec config/metric_spec_v2.yaml

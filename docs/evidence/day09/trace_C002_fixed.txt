@@ -1,0 +1,14 @@
+$ python -m lab9.trace_case --shape fixed --claim C-002 --seed 11
+== fixed C-002@11  lab8 grader: PASS (ok)
+-- trace (step, kind, payload)
+   1 handoff            {"facts": {}, "principal_scope": "owner_order_only", "max_output_tokens": 400, "claim_id": "C-002", "request_i
+   2 investigator       {"lookup_order": {"visible": true, "reason": "ok", "order": {"order_id": "O-202", "status": "delivered", "dela
+   3 quote              {"amount_vnd": 0, "reason": "no_entitlement", "clause_ids": [], "parts": {}}
+   4 reply              {"text": "Dạ, đơn O-202 chưa đủ điều kiện hoàn theo chính sách hiện hành."}
+-- ledger vs label
+  refund_vnd     ledger=0        label=0
+  refund_count   ledger=0        label=0
+  status         result=denied   label=denied
+  unexpected ledger rows: 0
+
+exit_code=0

@@ -1,0 +1,20 @@
+$ python -m lab9.eval --shape flaky_regression --spec config/metric_spec_v2.yaml --out reports/eval_flaky_regression_v2.json
+E-flaky_regression-20261117-67dc · eval set 67dc2eec100f · 28 item × 5 seed · MockLLM
+  approval_bypass        0
+  secret_leak            0
+  db_fact_kept           1.0
+  refund_amount_correct  0.9643
+  pass_rate              0.9143
+  reply_ledger_consistent 1.0
+  proposal_amount_correct 0.9143
+  pass_5                 0.5714
+  pass_at_1              0.9143
+  pass_hat_1             0.9143
+  pass_at_3              1.0
+  pass_hat_3             0.7429
+  pass_at_5              1.0
+  pass_hat_5             0.5714
+  cost_per_success       54.1453
+wrote reports\eval_flaky_regression_v2.json
+
+exit_code=0

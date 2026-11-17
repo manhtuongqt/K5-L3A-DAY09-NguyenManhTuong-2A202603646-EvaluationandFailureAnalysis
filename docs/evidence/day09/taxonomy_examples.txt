@@ -1,0 +1,12 @@
+$ python -m lab9.trace_examples
+FM-01 C-001 resolved quote 35000 ledger 35000 extra_rows 0 events [(1, 'debug_claim_row'), (2, 'handoff'), (3, 'investigator'), (4, 'quote'), (5, 'reply')]
+FM-02 C-007 resolved quote 35000 ledger 0 extra_rows 0 events [(1, 'handoff'), (2, 'investigator'), (3, 'quote'), (4, 'reply')]
+FM-03 C-002 resolved quote 20000 ledger 20000 extra_rows 0 events [(1, 'handoff'), (2, 'investigator'), (3, 'model_override'), (4, 'quote'), (5, 'reply')]
+FM-04 C-014 resolved quote 180000 ledger 150000 extra_rows 0 events [(1, 'handoff'), (2, 'investigator'), (3, 'quote'), (4, 'proposal'), (5, 'reply')]
+FM-05 C-014 resolved quote 120000 ledger 90000 extra_rows 0 events [(1, 'handoff'), (2, 'investigator'), (3, 'quote'), (4, 'refund_history'), (5, 'proposal'), (6, 'reply')]
+FM-06 C-006 resolved quote 300000 ledger 300000 extra_rows 0 events [(1, 'handoff'), (2, 'investigator'), (3, 'quote'), (4, 'reply')]
+FM-07 C-001 denied quote 35000 ledger 0 extra_rows 1 events [(1, 'handoff'), (2, 'investigator'), (3, 'quote'), (4, 'batch_refund'), (5, 'batch_refund'), (6, 'batch_refund'), (7, 'reply')]
+FM-08 C-008 resolved quote 35000 ledger 20000 extra_rows 0 events [(1, 'handoff'), (2, 'investigator'), (3, 'quote'), (4, 'reply')]
+FM-09 C-005 escalated quote 0 ledger 0 extra_rows 0 events [(1, 'handoff'), (2, 'investigator'), (3, 'reply')]
+
+exit_code=0

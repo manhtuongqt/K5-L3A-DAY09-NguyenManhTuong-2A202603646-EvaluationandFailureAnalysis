@@ -1,0 +1,4 @@
+$ python -m lab9.ci_check --pr reports/eval_pr.json --baseline reports/baseline_v1.json --spec config/metric_spec.yaml
+exit 0 — baseline and spec look sound
+
+exit_code=0

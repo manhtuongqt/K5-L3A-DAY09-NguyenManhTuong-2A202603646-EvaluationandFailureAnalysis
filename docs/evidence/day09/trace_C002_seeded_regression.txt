@@ -1,0 +1,16 @@
+$ python -m lab9.trace_case --shape seeded_regression --claim C-002 --seed 11
+== seeded_regression C-002@11  lab8 grader: FAIL (status resolved != denied)
+-- trace (step, kind, payload)
+   1 handoff            {"allowed_tools": ["lookup_order", "lookup_policy", "compute_compensation"], "task": "check_applicable_policy"
+   2 investigator       {"lookup_order": {"visible": true, "reason": "ok", "order": {"order_id": "O-202", "status": "delivered", "dela
+   3 model_override     {"delay_days": 5}
+   4 quote              {"amount_vnd": 20000, "reason": "entitled", "clause_ids": ["SHIP-LATE-03"], "parts": {"SHIP-LATE-03": 20000}}
+   5 refund_history     {"refund_count": 0, "refunded_vnd": 0}
+   6 reply              {"text": "Dạ, LogiX đã hoàn 20.000đ cho đơn O-202."}
+-- ledger vs label
+  refund_vnd     ledger=20000    label=0   <-- differs
+  refund_count   ledger=1        label=0   <-- differs
+  status         result=resolved label=denied
+  unexpected ledger rows: 0
+
+exit_code=0

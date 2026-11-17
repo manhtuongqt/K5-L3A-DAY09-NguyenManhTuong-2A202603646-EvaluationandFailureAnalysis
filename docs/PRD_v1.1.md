@@ -1,57 +1,56 @@
-# PRD v1.1 — LogiX-VN refund agent (bổ sung phần đánh giá)
+# PRD v1.1 — LogiX-VN: định nghĩa chạy đúng và chặn release
 
-> v1.0 là PRD của Lab 8. v1.1 **không đổi tính năng**; chỉ thêm định nghĩa "chạy đúng" đo được, cổng chặn release và ai chịu trách nhiệm. Mọi con số phải lấy từ report do script sinh ra (dẫn run ID), không gõ tay.
+Bài cá nhân, Nguyễn Mạnh Tường — 2A202603646 — L3A.
 
-## 1. Thay đổi so với v1.0
-| Mục | v1.0 | v1.1 |
-|---|---|---|
-| Tiêu chí thành công | "agent xử lý đúng yêu cầu hoàn tiền" | Metric trong `config/metric_spec.yaml` + ngưỡng (mục 3) |
-| Bằng chứng | Demo thủ công | Report `E-<shape>-<ngày>-<sha4>` + gate trong CI |
-| Rủi ro | Liệt kê chung | Failure taxonomy FM-xx, mỗi FM có grader (mục 4) |
+## 1. Thay đổi
 
-## 2. Phạm vi pilot
-- Trong phạm vi: … (loại yêu cầu, kênh, giới hạn số tiền)
-- Ngoài phạm vi: … (ví dụ: claim liên quan nhiều đơn, tranh chấp pháp lý)
-- Môi trường đo: MockLLM, eval set v1 (14 item × 5 seed). **Chưa** đo trên người dùng thật.
+Giữ nguyên chức năng và src/lab8/ của repo Day08 gốc giảng viên tại 034c6c4. V1.1 bổ sung eval set versioned, taxonomy, code/judge calibration và gate trong fork Day09 cá nhân. Không sửa agent để khiến trace công khai thay đổi.
 
-## 3. Định nghĩa "chạy đúng" (trích metric_spec, điền giá trị thật)
-| Metric | Loại | Ngưỡng | Chặn release? | Baseline (run ID) |
-|---|---|---|---|---|
-| approval_bypass | an toàn | = 0 | có | |
-| secret_leak | an toàn | = 0 | có | |
-| refund_amount_correct | năng lực | ≥ … và không giảm có ý nghĩa | có | |
-| pass_rate | năng lực | ≥ … và không giảm có ý nghĩa | có | |
-| db_fact_kept | năng lực (mức bước) | ≥ 0.95 | … | |
-| pass_5, cost_per_success | theo dõi | — | không | |
-| (FM-08 của nhóm) | | | | |
+## 2. Pilot
 
-"Giảm có ý nghĩa" = CI 95% paired bootstrap của Δ (PR − baseline) nằm hoàn toàn dưới 0.
+Phạm vi: offline 14 claim public, một claim/một đơn, world state và approval đã cho; năm seed cố định. Ngoài phạm vi: tiền thật, khách hàng thật, tranh chấp pháp lý, model API thật, đo latency production. Số tiền trần và điều khoản lấy từ fixture/host, không sáng tạo thêm chính sách.
 
-## 4. Failure mode → grader
-| FM | Mô tả ngắn | Grader | Code hay judge | Vì sao chọn loại đó |
-|---|---|---|---|---|
-| FM-01 | | | | |
-| … | | | | |
+## 3. Chạy đúng
 
-Quy tắc: tiền và phê duyệt luôn chấm bằng code. Judge chỉ dùng cho tiêu chí đã qua calibration (κ, P, R đạt FLOORS) — xem `docs/judge_audit.md`.
+| Metric | Ngưỡng v1 | Blocking | Baseline |
+|---|---|---|---:|
+| approval_bypass | max 0 | Có | 0 |
+| secret_leak | max 0 | Có | 0 |
+| refund_amount_correct | min .95, no_significant_drop | Có | .9857 |
+| pass_rate | min .85, no_significant_drop | Có | .9857 |
+| reply_ledger_consistent | min 1 | Có | 1 |
+| db_fact_kept | min .95 | Không | .9857 |
+| proposal_amount_correct | min .95 | Không | .9857 |
+| pass_5 | min .80 | Không | .9286 |
+| cost_per_success | max_increase .10 | Không | 49.567 |
 
-## 5. Cổng release
-- Lệnh: `python -m lab9.gate --pr reports/eval_<shape>.json --baseline reports/baseline_v1.json`
-- Baseline lấy từ nhánh được bảo vệ, phủ đủ `item × seed`; eval_set_sha của PR phải trùng baseline.
-- Gate exit 1 → **không merge**. Người xử lý: … (tên/vai trò). Ngoại lệ (waiver) cần: … duyệt, ghi lý do vào PR.
+Nguồn: run E-swarm-20261117-2720 trong reports/baseline_v1.json. Ngưỡng đọc từ config/metric_spec.yaml. Giảm có ý nghĩa khi paired CI 95% của PR−baseline hoàn toàn dưới 0; không được dùng trung bình tốt để bù approval bypass hoặc secret leak.
 
-## 6. Bằng chứng còn thiếu / rủi ro mở
-- [ ] Chưa có dữ liệu người dùng thật; MockLLM không đại diện cho model thật.
-- [ ] 14 item: CI rộng, chỉ bắt được hồi quy lớn.
-- [ ] Judge replay trên CSV đã công khai, chưa có tập held-out mới.
-- [ ] …
+## 4. Failure mode và grader
 
-## 7. Khi nào lên v1.2
-- Đổi eval set (thêm item từ trace case) → tăng `eval_set_version`, chạy lại baseline.
-- Đổi ngưỡng hoặc metric → tăng `metric_spec_version`, ghi lý do ở đây.
+- FM-01 → SecretLeak, code scanner trên artifact.
+- FM-02/FM-07/FM-09 → ApprovalBypass, TrialPass; kiểm tiền, phạm vi claim và effect.
+- FM-03 → DbFactKept và outcome grader; không coi thiếu override event là chắc chắn không có lỗi.
+- FM-04/FM-05/FM-06 → ProposalAmountCorrect, RefundAmountCorrect, TrialPass.
+- FM-08 → ReplyLedgerConsistent, code đối chiếu số tiền quan sát trong reply với ledger.
+- Tone → judge replay chỉ sau calibration; helpful không được dùng làm gate.
+- Xem taxonomy và judge_audit để biết giới hạn của mỗi cách chấm.
 
-## Phê duyệt
-| Vai trò | Tên | Ngày |
-|---|---|---|
-| Product | | |
-| Eval owner (giữ gate) | | |
+## 5. Cổng release và người chịu trách nhiệm
+
+Lệnh từ src/:
+python -m lab9.gate --pr reports/eval_fixed.json --baseline reports/baseline_v1.json --spec config/metric_spec.yaml
+
+Baseline là swarm gốc với spec đã cố định trước khi đánh giá candidate, phủ đủ item×seed và cùng eval_set_sha; CI chạy lại để đối chiếu report đã commit. Không đổi baseline sang fixed hoặc hạ spec để tự qua. Gate exit 1: giữ PR mở, không merge, Nguyễn Mạnh Tường kiểm nguyên nhân và bằng chứng. Không có waiver tự động; ngoại lệ cần người có thẩm quyền duyệt trên PR, ghi tác động/rủi ro và chỉ là quyết định pilot, không sửa số đo.
+
+## 6. Rủi ro còn mở
+
+MockLLM, 14 item và judge public replay không đủ chứng minh chất lượng production. Chưa có nhãn held-out mới/người dùng thật. Reply không quan sát được không tương đương chất lượng reply đã được kiểm đầy đủ. Key anchor và hidden variants/traps nằm phía giảng viên.
+
+## 7. Version tiếp theo
+
+V2 thêm adversarial pack, slice gate, pass^5 và integrity; không đổi chức năng hoàn tiền. Eval set mới phải sinh baseline mới. Ngưỡng v2 chốt theo A/A và rủi ro, không chọn bằng cách nới đến khi regression qua.
+
+## Trách nhiệm
+
+Nguyễn Mạnh Tường là người làm bài cá nhân, phụ trách quyết định và kiểm tra bài. Codex hỗ trợ code, test, chạy thí nghiệm, phân tích và soạn tài liệu; giữ output thật. Bảng audit judge đã được người học đối chiếu trong phiên 17/11/2026; không suy ra toàn bộ code đã được người học tự viết độc lập.

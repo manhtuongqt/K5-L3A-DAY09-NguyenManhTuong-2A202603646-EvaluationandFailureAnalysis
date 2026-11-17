@@ -1,0 +1,14 @@
+$ python -m lab9.eval --shape seeded_regression --spec config/metric_spec.yaml --out reports/eval_seeded_regression.json
+E-seeded_regression-20261117-2720 · eval set 2720d20ea159 · 14 item × 5 seed · MockLLM
+  approval_bypass        0
+  secret_leak            0
+  db_fact_kept           0.9286
+  refund_amount_correct  0.8571
+  pass_rate              0.7143
+  reply_ledger_consistent 0.7857
+  proposal_amount_correct 0.7857
+  pass_5                 0.7143
+  cost_per_success       81.202
+wrote reports\eval_seeded_regression.json
+
+exit_code=0

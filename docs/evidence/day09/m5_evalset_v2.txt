@@ -1,0 +1,5 @@
+$ python -m lab9.evalset --v2 --build
+wrote data\eval\eval_set_v2.jsonl (28 items) and data\eval\labels_v2.json (28 labels)
+eval set v2 67dc2eec100f: 0 problem(s)
+
+exit_code=0

@@ -1,0 +1,16 @@
+$ python -m lab9.gate --pr reports/traps/loosened_spec.json --baseline reports/baseline_v2.json --spec config/metric_spec_v2.yaml --spec reports/traps/loosened_spec.spec.yaml --base-spec config/metric_spec_v2.yaml
+gate: PR E-slice_regression-20261117-67dc vs main E-swarm-20261117-67dc · eval set 67dc2eec100f
+  INTEGRITY ratchet loosened db_fact_kept.min
+  INTEGRITY ratchet loosened refund_amount_correct.min
+  INTEGRITY ratchet removed no_significant_drop refund_amount_correct
+  INTEGRITY ratchet loosened pass_rate.min
+  INTEGRITY ratchet removed no_significant_drop pass_rate
+  INTEGRITY ratchet loosened pass_hat_5.min
+  INTEGRITY ratchet loosened reply_ledger_consistent.min
+  INTEGRITY ratchet loosened proposal_amount_correct.min
+  INTEGRITY ratchet removed denial
+  INTEGRITY ratchet removed money_movement
+  INTEGRITY ratchet removed adversarial
+exit 1 — blocked: integrity
+
+exit_code=1
