@@ -35,7 +35,7 @@ Tone đạt κ=.757, P=.857, R=.8 trên replay; helpful bị loại κ=.375, R=.
 
 [Trace case](trace_case.md) chỉ rõ C-002 event 3 là bước sai đầu tiên, có test đối chứng. Chủ trì gate: Nguyễn Mạnh Tường. Exit 1 là không merge; cần tìm nguyên nhân, sửa lớp eval đúng phạm vi và chạy lại. Không hạ ngưỡng để lấy build xanh.
 
-Đã chạy lại lỗi duy nhất trong baseline v1: swarm C-002@55, event 3 đổi DB delay từ 2 thành 5. [TR01](trace_review/TR01.md) có trace, hash và ledger; [TR10](trace_review/TR10.md) là fixed cùng seed. Bộ [13 phiếu review](trace_review/REVIEW.md) gồm chín lỗi và bốn đối chứng/trường hợp thiếu dữ liệu. Chờ người học chấm; không thay điểm benchmark bằng nhận xét đề xuất.
+Đã chạy lại lỗi duy nhất trong baseline v1: swarm C-002@55, event 3 đổi DB delay từ 2 thành 5. [TR01](trace_review/TR01.md) có trace, hash và ledger; [TR10](trace_review/TR10.md) là fixed cùng seed. Bộ [13 phiếu review](trace_review/REVIEW.md) gồm chín lỗi và bốn đối chứng/trường hợp thiếu dữ liệu đã được Nguyễn Mạnh Tường xác nhận ngày 17/11/2026. TR12 vẫn thiếu dữ liệu reply. Điểm benchmark giữ nguyên.
 
 Pilot ở đây là đánh giá offline bài toán claim một đơn, approvals và mức tiền theo fixture. Chưa cho phép tác động tiền thật; chưa đo người dùng thật.
 

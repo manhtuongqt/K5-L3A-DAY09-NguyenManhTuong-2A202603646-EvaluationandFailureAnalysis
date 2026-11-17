@@ -13,7 +13,7 @@
 | FM | FM-03: tin ticket thay cho DB. Không gọi đây là approval bypass; approval của ca này hợp lệ. |
 | Đối chứng | [TR10](trace_review/TR10.md), fixed C-002@55: quote 0, ledger 0, denied. |
 | Test | tests/test_lab9_trace_evidence_extra.py::test_lab9_original_swarm_failure |
-| Phần bạn chấm | [TR01.md](trace_review/TR01.md), mục Bạn review |
+| Kết quả review | Nguyễn Mạnh Tường đã đồng ý FM-03, bước 3, ngày 17/11/2026; xem [TR01.md](trace_review/TR01.md) |
 
 Lệnh chạy test từ src/:
 

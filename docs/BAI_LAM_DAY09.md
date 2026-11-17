@@ -14,7 +14,7 @@ Tài liệu gốc Day09 được giữ nguyên để đối chiếu. Các chỗ 
 4. [Eval card](eval_card.md): số liệu v1/v2, CI, slice, reliability, giới hạn.
 5. [PRD v1.1](PRD_v1.1.md): định nghĩa chạy đúng, gate owner và phạm vi pilot.
 6. [Đối chiếu yêu cầu](DOI_CHIEU_YEU_CAU_DAY09.md): vị trí từng artifact.
-7. [Trace lỗi và bằng chứng](trace_audit.md): chín ca lỗi, bốn đối chứng/trường hợp thiếu dữ liệu. [Bảng review](trace_review/REVIEW.md) để người học chấm; các ô xác nhận đang trống.
+7. [Trace lỗi và bằng chứng](trace_audit.md): chín ca lỗi, bốn đối chứng/trường hợp thiếu dữ liệu. Người học đã review và đồng ý [13/13 phiếu](trace_review/REVIEW.md) ngày 17/11/2026; TR12 vẫn là thiếu bằng chứng về reply.
 
 ## Chạy lại
 
@@ -49,7 +49,7 @@ Workflow `eval-gate` gốc Day09 được giữ nguyên. Workflow bổ sung ki�
 
 ## Phân công và AI hỗ trợ
 
-Đây là bài cá nhân của Nguyễn Mạnh Tường, phụ trách bài và quyết định nộp. Codex hỗ trợ triển khai code, chạy kiểm thử/thí nghiệm, phân tích và soạn báo cáo. Người học đã xác nhận audit judge ngày 17/11/2026. Việc xác nhận này không được mô tả thành tự viết độc lập mọi dòng code hoặc kiểm chứng model/người dùng thật.
+Đây là bài cá nhân của Nguyễn Mạnh Tường, phụ trách bài và quyết định nộp. Codex hỗ trợ triển khai code, chạy kiểm thử/thí nghiệm, phân tích và soạn báo cáo. Người học đã xác nhận audit judge và toàn bộ 13 phiếu trace ngày 17/11/2026. Việc xác nhận này không được mô tả thành tự viết độc lập mọi dòng code hoặc kiểm chứng model/người dùng thật.
 
 ## Nộp
 

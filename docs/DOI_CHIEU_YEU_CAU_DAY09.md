@@ -36,7 +36,7 @@ Nguồn agent được chép từ `src/` của repo gốc Day08 giảng viên t�
 | M7 trap | 4/4 trap bị gate exit 1; lệnh tổng traps exit 0 | m7_traps.txt và m7_trap_*.txt |
 | M7 baseline tự so | Merge ở cả v1/v2 | m4_baseline_self.txt, v2_baseline_self.txt |
 | Test đúng phạm vi Day09 | Host/CLI và test Day09 có marker student; thêm test lỗi swarm gốc, hash/ledger và chống ghi đè phiếu chấm; không làm ba shape TODO Day08 | evidence/day09/host_tests.txt, day09_tests.txt |
-| Phiếu review trace | Chín lỗi quan sát được, bốn đối chứng/trường hợp thiếu dữ liệu; phần chấm của người học đang trống | trace_audit.md, trace_review/REVIEW.md, src/reports/trace_cases/ |
+| Phiếu review trace | Người học đã review và đồng ý 13/13 ca ngày 17/11/2026: chín ca lỗi, ba đối chứng không thấy lỗi, một ca thiếu dữ liệu reply; không tự gán điểm | trace_audit.md, trace_review/REVIEW.md, trace_review/confirmation.json, src/reports/trace_cases/ |
 | Bảo mật/nguồn | Kiểm file gốc, protected Lab08, mẫu credential và SHA | python -m lab9.check_sources; evidence/day09/source_check.txt |
 | CI cuối | Cần bật Actions, eval-gate + eval-gate-v2 chạy thật; workflow bổ sung kiểm test/ratchet/traps | Tab Checks của PR starter/d09 trong fork cá nhân |
 | Hidden | Chưa có key anchor, hidden variants/traps hoặc kết quả giảng viên | Không tự gán PASS/điểm hidden |
@@ -50,7 +50,7 @@ Các đường dẫn src/ trong bảng tính từ gốc repo; tài liệu ở do
 - Report do runner/script sinh; raw logs được lưu cả hai lần phát hiện thiếu sót.
 - Không nới ngưỡng trong cùng eval-set version. Workflow bổ sung dùng base-spec từ PR base, tránh lấy một bản spec đã bị nới trong PR làm chuẩn.
 - Nhãn tách khỏi item; v2 giữ đủ v1 và pack.
-- Không đưa .env, key, venv, SQLite, trace hay bộ chấm riêng lên Git.
+- Không đưa .env, key, venv, SQLite, thư mục runtime traces/ hay bộ chấm riêng lên Git. Bằng chứng trace được chọn ở reports/trace_cases/ có hash; giá trị secret/header trong ca gài lỗi FM-01 đã được che và ghi rõ vị trí che.
 
 ## Lỗi đã sửa trong quá trình triển khai
 
@@ -61,6 +61,6 @@ Các đường dẫn src/ trong bảng tính từ gốc repo; tài liệu ở do
 
 ## Phần còn thuộc người học / giảng viên
 
-Audit judge đã được Nguyễn Mạnh Tường xác nhận trong phiên ngày 17/11/2026. Người học tiếp tục chịu trách nhiệm đọc/giải thích bài và tự nộp URL PR trên LMS trước 12:00 trưa 18/11/2026. PR cũ trên repo Day08 không dùng để nộp. Key năm anchor, vector/variant/trap ẩn và điểm chính thức do giảng viên đối chiếu. Public xanh không được mô tả thành bảo đảm 100 điểm.
+Audit judge và toàn bộ 13 phiếu trace đã được Nguyễn Mạnh Tường review và xác nhận trong phiên ngày 17/11/2026. Người học tự nộp URL PR trên LMS trước 12:00 trưa 18/11/2026. PR cũ trên repo Day08 không dùng để nộp. Key năm anchor, vector/variant/trap ẩn và điểm chính thức do giảng viên đối chiếu. Public xanh không được mô tả thành bảo đảm 100 điểm.
 
 Bonus Inspect AI/DeepEval chưa thực hiện; đây là mục ngoài thang chính M0–M7 và không cần để phủ đủ yêu cầu 100 điểm.

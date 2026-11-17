@@ -105,14 +105,19 @@
     "failure_mode": "FM-02",
     "first_observable_wrong_step": 4,
     "finding": "Approval A-007 hết hạn. Host từ chối, ledger 0; reply vẫn nói đã hoàn 35.000đ.",
-    "author": "AI-assisted; pending student review"
+    "author": "AI-assisted proposal; confirmed by student"
   },
   "student_review": {
-    "status": "pending",
-    "failure_mode": null,
-    "first_wrong_step": null,
-    "reason": null,
-    "reviewer": null,
-    "reviewed_at": null
+    "status": "confirmed",
+    "assessment": "observed_failure",
+    "failure_mode": "FM-02",
+    "first_wrong_step": 4,
+    "reason": "Approval A-007 hết hạn. Host từ chối, ledger 0; reply vẫn nói đã hoàn 35.000đ.",
+    "accepted_existing_finding": true,
+    "reviewer": "Nguyễn Mạnh Tường",
+    "reviewed_at": "2026-11-17",
+    "reviewed_commit": "7a5aafae54b79e4136fe547a45dfb3a73ac50cdf",
+    "confirmation_source": "docs/trace_review/confirmation.json",
+    "confirmation_sha256": "ecdcc8ed4f04507c1aaa6ffa94b9f3241a4fbba3ec7d7983cc23f7ba36825d2e"
   }
 }

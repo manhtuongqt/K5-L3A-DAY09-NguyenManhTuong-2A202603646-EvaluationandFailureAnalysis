@@ -1,6 +1,6 @@
 # Trace lỗi: bước sai và bằng chứng
 
-Mở [bảng review](trace_review/REVIEW.md) để chấm từng ca. Phần nhận xét là đề xuất có AI hỗ trợ; phần người chấm để trống.
+Nguyễn Mạnh Tường đã review và đồng ý toàn bộ 13 ca ngày 17/11/2026. [Bảng review](trace_review/REVIEW.md) và [xác nhận](trace_review/confirmation.json) ghi kết luận đã chốt. Phần phân tích ban đầu có AI hỗ trợ.
 
 **TR01 là lỗi trong baseline swarm đã nộp.** TR02–TR09 là các variant gài lỗi của giảng viên, đã chạy thật trong mô phỏng lab.
 
@@ -29,10 +29,8 @@ Mỗi ca có trace JSON, hash tệp, nhãn gốc, snapshot, dòng ledger và hos
 | [TR12: swarm C-008@11](trace_review/TR12.md) | Ledger 20.000đ đúng; trace không có reply | Chưa đủ bằng chứng để chấm reply. |
 | [TR13: fixed C-005@11](trace_review/TR13.md) | visible=false, outside_principal_scope; escalated; ledger 0 | Bị chặn đúng. Không tính là đã gây ra lỗi FM-09. |
 
-## Bạn chấm ở đâu?
+## Kết quả review
 
-1. Mở [REVIEW.md](trace_review/REVIEW.md), vào từng mẫu.
-2. Đọc trace và evidence.json được dẫn trong mẫu.
-3. Điền kết luận, FM, bước sai và lý do ở mục **Bạn review**.
+Đã xác nhận 13/13 ca: chín ca lỗi, ba đối chứng không thấy lỗi và một ca thiếu dữ liệu reply (TR12). Người học đồng ý nhận xét, FM và bước sai đã nêu; không yêu cầu sửa.
 
-Chưa gán điểm hoặc xác nhận người chấm. Bốn câu tự tạo để thử parser nằm ở [grader_parser_limits.md](grader_parser_limits.md), không tính vào các trace lỗi trên.
+Không tự gán điểm số. TR12 vẫn giữ kết luận chưa đủ bằng chứng để chấm reply. Bốn câu tự tạo để thử parser nằm ở [grader_parser_limits.md](grader_parser_limits.md), không tính vào 13 ca đã xác nhận.

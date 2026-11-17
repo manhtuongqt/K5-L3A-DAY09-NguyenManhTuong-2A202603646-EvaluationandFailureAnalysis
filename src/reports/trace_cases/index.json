@@ -3,7 +3,7 @@
   "baseline_sha256": "ab81f951666445800b460c49cef5f36930435b6f12ddf26df2bd1081ac2382dd",
   "baseline_failures": 1,
   "scope": "one reproduced original swarm failure, instructor injected variants and controls; not production incidents",
-  "review_status": "pending_student_review",
+  "review_status": "confirmed_by_student",
   "cases": [
     {
       "case_id": "TR01",
@@ -13,7 +13,7 @@
       "failure_mode_proposal": "FM-03",
       "first_wrong_step_proposal": 3,
       "trace_file": "TR01.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR02",
@@ -23,7 +23,7 @@
       "failure_mode_proposal": "FM-01",
       "first_wrong_step_proposal": 1,
       "trace_file": "TR02.redacted.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR03",
@@ -33,7 +33,7 @@
       "failure_mode_proposal": "FM-02",
       "first_wrong_step_proposal": 4,
       "trace_file": "TR03.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR04",
@@ -43,7 +43,7 @@
       "failure_mode_proposal": "FM-04",
       "first_wrong_step_proposal": 4,
       "trace_file": "TR04.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR05",
@@ -53,7 +53,7 @@
       "failure_mode_proposal": "FM-05",
       "first_wrong_step_proposal": 5,
       "trace_file": "TR05.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR06",
@@ -63,7 +63,7 @@
       "failure_mode_proposal": "FM-06",
       "first_wrong_step_proposal": 3,
       "trace_file": "TR06.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR07",
@@ -73,7 +73,7 @@
       "failure_mode_proposal": "FM-07",
       "first_wrong_step_proposal": 4,
       "trace_file": "TR07.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR08",
@@ -83,7 +83,7 @@
       "failure_mode_proposal": "FM-08",
       "first_wrong_step_proposal": 4,
       "trace_file": "TR08.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR09",
@@ -93,7 +93,7 @@
       "failure_mode_proposal": "FM-03",
       "first_wrong_step_proposal": 3,
       "trace_file": "TR09.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR10",
@@ -103,7 +103,7 @@
       "failure_mode_proposal": null,
       "first_wrong_step_proposal": null,
       "trace_file": "TR10.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR11",
@@ -113,7 +113,7 @@
       "failure_mode_proposal": null,
       "first_wrong_step_proposal": null,
       "trace_file": "TR11.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR12",
@@ -123,7 +123,7 @@
       "failure_mode_proposal": null,
       "first_wrong_step_proposal": null,
       "trace_file": "TR12.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     },
     {
       "case_id": "TR13",
@@ -133,7 +133,7 @@
       "failure_mode_proposal": null,
       "first_wrong_step_proposal": null,
       "trace_file": "TR13.trace.json",
-      "student_review": "pending"
+      "student_review": "confirmed"
     }
   ],
   "generated_document_sha256": {
@@ -151,5 +151,32 @@
     "TR11.md": "1070e36e43d9c878878578ab48e677912a48418ddf99bb5af05e014dff52c82e",
     "TR12.md": "39a1f746e3b9443a4cc3ecc36223d10d85e3ba7d16fb8b02b2e0b90229610620",
     "TR13.md": "95e5feafa8da477b50703fb1f9001bb6e8ce40c812af1324a3e3d3f36c5f36b4"
+  },
+  "confirmation": {
+    "reviewer": "Nguyễn Mạnh Tường",
+    "reviewed_on": "2026-11-17",
+    "reviewed_commit": "7a5aafae54b79e4136fe547a45dfb3a73ac50cdf",
+    "source": "docs/trace_review/confirmation.json",
+    "source_sha256": "ecdcc8ed4f04507c1aaa6ffa94b9f3241a4fbba3ec7d7983cc23f7ba36825d2e",
+    "confirmed_cases": 13,
+    "observed_failures": 9,
+    "no_observed_failure_controls": 3,
+    "insufficient_reply_evidence": 1
+  },
+  "confirmed_document_sha256": {
+    "REVIEW.md": "0c2ae689e8fd65302bddd161ca93674217432d81cfed6fd693113bfad1e8767d",
+    "TR01.md": "9fe4a500eaf45a0522bbf8a63a5a934c391bbeca111f183d6890e922f468b38e",
+    "TR02.md": "a30a08f5f3fea138137201f5be705b4eabed529bc6c35f540dc2b6b88ee4dc58",
+    "TR03.md": "52e0be38ab20d825f6924faa00c20eb34fb02f20c87ea0a05b0b81ecf00fa253",
+    "TR04.md": "b2ca123c3b600ae398a6ffc7c3d1b0e2952757e5c23c111fa6091fe6c3e28441",
+    "TR05.md": "9425ccfff1ac4910594424e8df82716bfb2fe050f409591da751572d6e9d9198",
+    "TR06.md": "0fd805c538e20d6d28e8f923c5502be0d703b42568682cb3cb73b68cd2f0f98e",
+    "TR07.md": "e86a215605d7f19b5426dda7f27dac06ec54c8c316ad9bcd923666f72ca51239",
+    "TR08.md": "650ea04375cf07f7a12b2885e81d7b41fcd41a4fd53382ada75504e4cdd79684",
+    "TR09.md": "b0c85d4d2dbf0c6207e8171c8976ede85176290ef094a31784d6dc60846911e8",
+    "TR10.md": "4bedd9d2c5c59001ad4d8124b1ce317f5b114718e737add5847670750239f220",
+    "TR11.md": "f8f2f5d762a4121890135bd840fba21065470e157f97be65394bb81eebca7b4d",
+    "TR12.md": "e037eaa278035afbc7c80f6f4744d2afb350ae78b9f6b7befd5de9ec261becbd",
+    "TR13.md": "da77098ef9727c4bc6d08c5f7607bbfc6de3461897bc4457d40f84cdb7ed5381"
   }
 }

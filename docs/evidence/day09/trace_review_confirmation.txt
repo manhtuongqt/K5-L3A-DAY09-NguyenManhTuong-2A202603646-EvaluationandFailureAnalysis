@@ -1,0 +1,17 @@
+$ python -m lab9.confirm_trace_review
+TR01 confirmed observed_failure
+TR02 confirmed observed_failure
+TR03 confirmed observed_failure
+TR04 confirmed observed_failure
+TR05 confirmed observed_failure
+TR06 confirmed observed_failure
+TR07 confirmed observed_failure
+TR08 confirmed observed_failure
+TR09 confirmed observed_failure
+TR10 confirmed no_observed_failure
+TR11 confirmed no_observed_failure
+TR12 confirmed insufficient_evidence_for_reply
+TR13 confirmed no_observed_failure
+recorded 13 confirmed reviews; trace bytes and score reports unchanged
+
+exit_code=0
