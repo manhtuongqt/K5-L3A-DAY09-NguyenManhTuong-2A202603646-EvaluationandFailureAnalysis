@@ -20,7 +20,7 @@ Nguồn agent được chép từ `src/` của repo gốc Day08 giảng viên t�
 | M3 hai grader | Tiền/approval chấm bằng code từ ledger và nhãn | src/lab9/graders.py, src/tests/test_lab9_graders.py giữ nguyên |
 | M3 detection/false alarm | 100% / 0%; có lưu lượt trước 75% | evidence/day09/m3_detection.txt, m3_detection_before.txt |
 | M3 FM-08 | reply_ledger_consistent blocking min=1; test chứng minh TrialPass cũ có thể bỏ sót | src/config/metric_spec*.yaml, src/tests/test_lab9_mechanisms_extra.py |
-| Trace case + regression test | C-002@11 sai đầu tiên event 3; broken fail, fixed pass | trace_case.md, test_lab9_first_wrong_step_regression |
+| Trace case + regression test | Swarm gốc C-002@55 sai event 3; đối chứng fixed cùng seed qua. Ca seeded_regression C-002@11 trước đó vẫn được lưu | trace_case.md, tests/test_lab9_trace_evidence_extra.py, test_lab9_first_wrong_step_regression |
 | M4 bootstrap | Δ −.271; CI [−.500, −.057], khớp tham chiếu | evidence/day09/m4_gate_seeded_regression.txt |
 | M4 baseline | Swarm 69/70, cùng eval SHA/seeds/spec; fixed và PR swarm qua | src/reports/baseline_v1.json, eval_fixed.json, eval_pr.json |
 | M4 CI Core | Phải chạy thật trên fork Day09 và đọc Checks của commit cuối | workflow eval-gate, evidence/day09/m4_ci_check.txt |
@@ -35,7 +35,8 @@ Nguồn agent được chép từ `src/` của repo gốc Day08 giảng viên t�
 | M7 scorecard | 3/3 regression blocked, false alarm 0 | evidence/day09/m7_mutation.txt |
 | M7 trap | 4/4 trap bị gate exit 1; lệnh tổng traps exit 0 | m7_traps.txt và m7_trap_*.txt |
 | M7 baseline tự so | Merge ở cả v1/v2 | m4_baseline_self.txt, v2_baseline_self.txt |
-| Test đúng phạm vi Day09 | 57 test host/CLI và 67 test Day09 có marker student đều PASS; không làm ba shape TODO Day08 | evidence/day09/host_tests.txt, day09_tests.txt |
+| Test đúng phạm vi Day09 | Host/CLI và test Day09 có marker student; thêm test lỗi swarm gốc, hash/ledger và chống ghi đè phiếu chấm; không làm ba shape TODO Day08 | evidence/day09/host_tests.txt, day09_tests.txt |
+| Phiếu review trace | Chín lỗi quan sát được, bốn đối chứng/trường hợp thiếu dữ liệu; phần chấm của người học đang trống | trace_audit.md, trace_review/REVIEW.md, src/reports/trace_cases/ |
 | Bảo mật/nguồn | Kiểm file gốc, protected Lab08, mẫu credential và SHA | python -m lab9.check_sources; evidence/day09/source_check.txt |
 | CI cuối | Cần bật Actions, eval-gate + eval-gate-v2 chạy thật; workflow bổ sung kiểm test/ratchet/traps | Tab Checks của PR starter/d09 trong fork cá nhân |
 | Hidden | Chưa có key anchor, hidden variants/traps hoặc kết quả giảng viên | Không tự gán PASS/điểm hidden |

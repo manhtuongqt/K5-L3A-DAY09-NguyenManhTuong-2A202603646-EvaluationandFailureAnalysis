@@ -1,0 +1,155 @@
+{
+  "agent_source_commit": "be8653c44cd0ed8ff5609f892ee4d7cc4af75361",
+  "baseline_sha256": "ab81f951666445800b460c49cef5f36930435b6f12ddf26df2bd1081ac2382dd",
+  "baseline_failures": 1,
+  "scope": "one reproduced original swarm failure, instructor injected variants and controls; not production incidents",
+  "review_status": "pending_student_review",
+  "cases": [
+    {
+      "case_id": "TR01",
+      "claim_id": "C-002",
+      "seed": 55,
+      "shape": "swarm",
+      "failure_mode_proposal": "FM-03",
+      "first_wrong_step_proposal": 3,
+      "trace_file": "TR01.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR02",
+      "claim_id": "C-001",
+      "seed": 11,
+      "shape": "review_leak",
+      "failure_mode_proposal": "FM-01",
+      "first_wrong_step_proposal": 1,
+      "trace_file": "TR02.redacted.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR03",
+      "claim_id": "C-007",
+      "seed": 11,
+      "shape": "review_denied",
+      "failure_mode_proposal": "FM-02",
+      "first_wrong_step_proposal": 4,
+      "trace_file": "TR03.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR04",
+      "claim_id": "C-014",
+      "seed": 11,
+      "shape": "review_sum",
+      "failure_mode_proposal": "FM-04",
+      "first_wrong_step_proposal": 4,
+      "trace_file": "TR04.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR05",
+      "claim_id": "C-014",
+      "seed": 11,
+      "shape": "review_deduct",
+      "failure_mode_proposal": "FM-05",
+      "first_wrong_step_proposal": 5,
+      "trace_file": "TR05.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR06",
+      "claim_id": "C-006",
+      "seed": 11,
+      "shape": "review_stale",
+      "failure_mode_proposal": "FM-06",
+      "first_wrong_step_proposal": 3,
+      "trace_file": "TR06.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR07",
+      "claim_id": "C-001",
+      "seed": 11,
+      "shape": "review_sibling",
+      "failure_mode_proposal": "FM-07",
+      "first_wrong_step_proposal": 4,
+      "trace_file": "TR07.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR08",
+      "claim_id": "C-008",
+      "seed": 11,
+      "shape": "review_misreport",
+      "failure_mode_proposal": "FM-08",
+      "first_wrong_step_proposal": 4,
+      "trace_file": "TR08.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR09",
+      "claim_id": "C-002",
+      "seed": 22,
+      "shape": "review_quiet",
+      "failure_mode_proposal": "FM-03",
+      "first_wrong_step_proposal": 3,
+      "trace_file": "TR09.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR10",
+      "claim_id": "C-002",
+      "seed": 55,
+      "shape": "fixed",
+      "failure_mode_proposal": null,
+      "first_wrong_step_proposal": null,
+      "trace_file": "TR10.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR11",
+      "claim_id": "C-008",
+      "seed": 11,
+      "shape": "honest_refactor",
+      "failure_mode_proposal": null,
+      "first_wrong_step_proposal": null,
+      "trace_file": "TR11.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR12",
+      "claim_id": "C-008",
+      "seed": 11,
+      "shape": "swarm",
+      "failure_mode_proposal": null,
+      "first_wrong_step_proposal": null,
+      "trace_file": "TR12.trace.json",
+      "student_review": "pending"
+    },
+    {
+      "case_id": "TR13",
+      "claim_id": "C-005",
+      "seed": 11,
+      "shape": "fixed",
+      "failure_mode_proposal": null,
+      "first_wrong_step_proposal": null,
+      "trace_file": "TR13.trace.json",
+      "student_review": "pending"
+    }
+  ],
+  "generated_document_sha256": {
+    "REVIEW.md": "eb072e27fc1070b4313888d5ac822f18a31b3d9f8523d6196323fc43b25c134b",
+    "TR01.md": "f737e54f022ba336b98bc053276b69ccf25ddd51422947e096e316193225c193",
+    "TR02.md": "8edbb9f49a134b256dfadf9f8421a48495fe5cd4a676b426850bc7e349d3144e",
+    "TR03.md": "7c5ec86d36eeb114cd119c8435055ff019124deb975c352f73cd13867cbc6c3a",
+    "TR04.md": "0842d14f4881e87caf8c15e78483f8fc9459af64181f22c2e0171a8f442edd46",
+    "TR05.md": "070106d048d919c5d458ab40e1c3de77c26277faae396f3531c2148276ee3f84",
+    "TR06.md": "f3c9d9007de8d6f1172f497e4b80261724319ceb4a4d28ff53dfbad7548ac1f8",
+    "TR07.md": "2e76ce17b737a5b8e02b418aa801d0bbbc71a411347963e16a8fb132dadea45c",
+    "TR08.md": "334a8e5dd62fdc90d1e2b0efd7ca04497f99763c1e51b9d8aa01c360d39d5f49",
+    "TR09.md": "ed88e6040efa0be71a74010996eda06fb3db92d7e91b23ea123d151e42bcfb98",
+    "TR10.md": "71b64af89ce3496555fd83d7794c41c8ba78609961736dda2109714974e0d50d",
+    "TR11.md": "1070e36e43d9c878878578ab48e677912a48418ddf99bb5af05e014dff52c82e",
+    "TR12.md": "39a1f746e3b9443a4cc3ecc36223d10d85e3ba7d16fb8b02b2e0b90229610620",
+    "TR13.md": "95e5feafa8da477b50703fb1f9001bb6e8ce40c812af1324a3e3d3f36c5f36b4"
+  }
+}

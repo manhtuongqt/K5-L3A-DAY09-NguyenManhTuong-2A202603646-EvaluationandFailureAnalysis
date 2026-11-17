@@ -9,12 +9,12 @@ Tài liệu gốc Day09 được giữ nguyên để đối chiếu. Các chỗ 
 ## Đọc theo thứ tự
 
 1. [Taxonomy](failure_taxonomy.md): lỗi nào, bằng chứng đâu, dùng grader gì.
-2. [Trace case](trace_case.md): C-002 sai lần đầu ở event 3, có đối chứng và regression test.
+2. [Trace case](trace_case.md): swarm gốc C-002@55 sai ở event 3; có đối chứng cùng seed và regression test.
 3. [Judge audit](judge_audit.md): tone được dùng, helpful bị loại; người học đã đối chiếu.
 4. [Eval card](eval_card.md): số liệu v1/v2, CI, slice, reliability, giới hạn.
 5. [PRD v1.1](PRD_v1.1.md): định nghĩa chạy đúng, gate owner và phạm vi pilot.
 6. [Đối chiếu yêu cầu](DOI_CHIEU_YEU_CAU_DAY09.md): vị trí từng artifact.
-7. [Kiểm tra lại trace](trace_audit.md): tám trial và bốn phản ví dụ, phân biệt điểm metric với bằng chứng và phạm vi quan sát; chưa có xác nhận con người cho vòng mới này.
+7. [Trace lỗi và bằng chứng](trace_audit.md): chín ca lỗi, bốn đối chứng/trường hợp thiếu dữ liệu. [Bảng review](trace_review/REVIEW.md) để người học chấm; các ô xác nhận đang trống.
 
 ## Chạy lại
 

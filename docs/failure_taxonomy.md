@@ -2,6 +2,8 @@
 
 Tôi giữ mã và tên ngắn của đề. Bằng chứng dưới đây được chạy lại bằng các công tắc lỗi nguyên bản trong lab9.variant_agent, không sửa variant hay agent Day08. Lệnh: python -m lab9.trace_examples. Kết quả máy sinh: [taxonomy_examples.json](../src/reports/taxonomy_examples.json). Mỗi case seed=11, tên shape taxonomy_FM_xx; trường step là vị trí event tính từ 1.
 
+Lỗi trong swarm gốc đã nộp: [C-002@55, bước 3](trace_review/TR01.md). Các ca theo FM có [phiếu review](trace_review/REVIEW.md), kèm trace và ledger; phần người chấm chưa điền.
+
 | ID | Tên | Định nghĩa | Layer | Bằng chứng và bước sai đầu tiên | Grader / metric |
 |---|---|---|---|---|---|
 | FM-01 | leaky_trace | Ghi dữ liệu cha chứa secret/PII vào artifact ngoài phạm vi được phép | orchestration/state | C-001, bước 1 debug_claim_row: scanner phát hiện forbidden value; ví dụ xuất bản đã redacted | Code SecretLeak / secret_leak |

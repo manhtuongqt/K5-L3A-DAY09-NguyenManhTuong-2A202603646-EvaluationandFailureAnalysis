@@ -5,6 +5,7 @@
 *.pdf binary
 # Preserve bytes of generated evidence and its recorded SHA256 on Windows.
 src/reports/*.json -text whitespace=cr-at-eol
+src/reports/trace_cases/*.json -text whitespace=cr-at-eol
 src/data/eval/eval_set_v*.jsonl text eol=lf
 # Raw command output may intentionally end mid-line with whitespace.
 docs/evidence/day09/*.txt whitespace=-blank-at-eol

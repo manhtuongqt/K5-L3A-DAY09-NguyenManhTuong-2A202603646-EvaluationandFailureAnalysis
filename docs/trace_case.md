@@ -1,29 +1,34 @@
-# Trace case — bước sai đầu tiên
+# Trace case — lỗi trong swarm gốc
 
-Kiểm tra bổ sung: [trace_audit.md](trace_audit.md) đối chiếu tám trial thật và bốn phản ví dụ parser; chỉ rõ lỗi bị metric riêng bỏ sót, trường hợp chấm oan và trường hợp chưa đủ bằng chứng. Đây là phân tích có AI hỗ trợ, không ghi thay xác nhận chấm của con người.
+## C-002, seed 55
 
-| Trường | Bằng chứng thực |
+Đây là lượt lỗi duy nhất trong baseline v1: 69/70 trial đạt. Đã chạy lại và so từng metric với dòng C-002@55 của baseline.
+
+| Mục | Bằng chứng |
 |---|---|
-| Trial | seeded_regression C-002@11; thuộc run E-seeded_regression-20261117-2720 |
-| Triệu chứng | status resolved thay vì denied; ledger=20.000đ, nhãn=0; reply nói đã hoàn 20.000đ |
-| Bước sai đầu tiên | Event 3, model_override, payload {"delay_days":5} |
-| Vì sao đầu tiên | Event 1 handoff chỉ công cụ read-only; event 2 investigator đọc DB đúng delay_days=2. Event 3 mới thay sự thật DB bằng ticket |
-| Failure mode | FM-03 ticket_trust; không gọi đây là approval bypass vì approval hợp lệ nhưng điều kiện nghiệp vụ không có |
-| Hậu quả | Event 4 quote sai 20.000đ; event 5 history=0; event 6 reply. Host kiểm approval/idempotency, không thay thế kiểm entitlement |
-| Đối chứng | fixed C-002@11 giữ DB=2, event 3 quote=0, event 4 reply từ chối, ledger=0, TrialPass=true |
-| Regression test | tests/test_lab9_contract_extra.py::test_lab9_first_wrong_step_regression |
-| Chưa chắc chắn | Trace cho biết dữ liệu bị thay ở event 3, không chứng minh suy nghĩ bên trong model hay tần suất trên model thật |
+| Trace | [TR01.trace.json](../src/reports/trace_cases/TR01.trace.json), run R-swarm-C-002-s55 |
+| Dữ liệu đúng | Event 2: DB delay_days=2. SHIP-LATE-03 chỉ áp dụng khi trễ ít nhất 3 ngày. |
+| Bước sai đầu tiên | Event 3, /events/2: model_override đặt delay_days=5. |
+| Hậu quả | Event 4 quote 20.000đ; ledger ghi 20.000đ. Nhãn yêu cầu proposal=0, refund=0, status=denied. |
+| FM | FM-03: tin ticket thay cho DB. Không gọi đây là approval bypass; approval của ca này hợp lệ. |
+| Đối chứng | [TR10](trace_review/TR10.md), fixed C-002@55: quote 0, ledger 0, denied. |
+| Test | tests/test_lab9_trace_evidence_extra.py::test_lab9_original_swarm_failure |
+| Phần bạn chấm | [TR01.md](trace_review/TR01.md), mục Bạn review |
 
-Lệnh tái lập, chạy từ src/:
+Lệnh chạy test từ src/:
 
-- python -m lab9.trace_case --shape seeded_regression --claim C-002 --seed 11
-- python -m lab9.trace_case --shape fixed --claim C-002 --seed 11
-- python -m pytest -q -o addopts= tests/test_lab9_contract_extra.py -k first_wrong_step
+    python -m pytest -q -m student -o addopts= tests/test_lab9_trace_evidence_extra.py
 
-Output thật: [variant](evidence/day09/trace_C002_seeded_regression.txt), [đối chứng](evidence/day09/trace_C002_fixed.txt).
+## Các lỗi khác
 
-## Một lỗi bị grader ban đầu bỏ sót
+[trace_audit.md](trace_audit.md) liệt kê chín ca lỗi và bốn đối chứng/trường hợp thiếu dữ liệu. Mỗi ca dẫn thẳng tới event, ledger và dữ liệu gốc.
 
-Lượt M3 đầu đạt detection 75%, false alarm 0%: [log lịch sử trước khi chuyển về fork cá nhân](evidence/day09/m3_detection_before.txt). C-013 bị pre_deducted đưa proposal về 0; ledger=0 vẫn khớp nhãn, nên chỉ chấm ledger chưa giải thích được lỗi proposal/policy_denied.
+Ca seeded_regression C-002@11 trước đó vẫn được lưu ở [log](evidence/day09/trace_C002_seeded_regression.txt), có test test_lab9_first_wrong_step_regression. Đó là variant gài lỗi của đề; không nhầm với swarm gốc C-002@55.
 
-Tôi thêm ProposalAmountCorrect để so proposal với nhãn. Đây là metric chẩn đoán code, không dùng lại pass_rate làm lời giải thích vòng tròn và không sửa agent. Lượt sau detection=100%, false alarm=0%: [log sau](evidence/day09/m3_detection.txt). Metric FM-08 riêng vẫn blocking để bắt reply sai dù TrialPass Day08 có thể PASS.
+## Grader từng bỏ sót gì?
+
+- C-008: ledger 20.000đ nhưng reply 35.000đ. TrialPass cũ vẫn PASS; metric FM-08 bắt được.
+- C-013: proposal bị trừ trước còn 0; chỉ nhìn ledger sẽ bỏ sót. Thêm ProposalAmountCorrect để chẩn đoán.
+- Detection public: [trước 75%](evidence/day09/m3_detection_before.txt), [sau 100%](evidence/day09/m3_detection.txt). Không suy ra phát hiện mọi lỗi ngoài bộ public.
+
+Chỉ ghi bước quan sát được. Không có log về thao tác nội bộ thì không tự đặt thêm bước hoặc nguyên nhân.

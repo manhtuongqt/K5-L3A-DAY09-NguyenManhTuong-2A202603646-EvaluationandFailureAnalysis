@@ -1,0 +1,17 @@
+$ python -m lab9.build_trace_review
+TR01 swarm C-002 55 step 3 proposal 20000 ledger 20000 extra_rows 0
+TR02 review_leak C-001 11 step 1 proposal 35000 ledger 35000 extra_rows 0
+TR03 review_denied C-007 11 step 4 proposal 35000 ledger 0 extra_rows 0
+TR04 review_sum C-014 11 step 4 proposal 180000 ledger 150000 extra_rows 0
+TR05 review_deduct C-014 11 step 5 proposal 120000 ledger 90000 extra_rows 0
+TR06 review_stale C-006 11 step 3 proposal 300000 ledger 300000 extra_rows 0
+TR07 review_sibling C-001 11 step 4 proposal 35000 ledger 0 extra_rows 1
+TR08 review_misreport C-008 11 step 4 proposal 35000 ledger 20000 extra_rows 0
+TR09 review_quiet C-002 22 step 3 proposal 20000 ledger 20000 extra_rows 0
+TR10 fixed C-002 55 step None proposal 0 ledger 0 extra_rows 0
+TR11 honest_refactor C-008 11 step None proposal 35000 ledger 20000 extra_rows 0
+TR12 swarm C-008 11 step None proposal 35000 ledger 20000 extra_rows 0
+TR13 fixed C-005 11 step None proposal 0 ledger 0 extra_rows 0
+saved 13 cases; student reviews left blank
+
+exit_code=0
