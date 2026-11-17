@@ -1,5 +1,7 @@
 # Trace case — bước sai đầu tiên
 
+Kiểm tra bổ sung: [trace_audit.md](trace_audit.md) đối chiếu tám trial thật và bốn phản ví dụ parser; chỉ rõ lỗi bị metric riêng bỏ sót, trường hợp chấm oan và trường hợp chưa đủ bằng chứng. Đây là phân tích có AI hỗ trợ, không ghi thay xác nhận chấm của con người.
+
 | Trường | Bằng chứng thực |
 |---|---|
 | Trial | seeded_regression C-002@11; thuộc run E-seeded_regression-20261117-2720 |

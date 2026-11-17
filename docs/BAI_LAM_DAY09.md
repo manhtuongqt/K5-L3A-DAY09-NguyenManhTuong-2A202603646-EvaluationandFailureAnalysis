@@ -14,6 +14,7 @@ Tài liệu gốc Day09 được giữ nguyên để đối chiếu. Các chỗ 
 4. [Eval card](eval_card.md): số liệu v1/v2, CI, slice, reliability, giới hạn.
 5. [PRD v1.1](PRD_v1.1.md): định nghĩa chạy đúng, gate owner và phạm vi pilot.
 6. [Đối chiếu yêu cầu](DOI_CHIEU_YEU_CAU_DAY09.md): vị trí từng artifact.
+7. [Kiểm tra lại trace](trace_audit.md): tám trial và bốn phản ví dụ, phân biệt điểm metric với bằng chứng và phạm vi quan sát; chưa có xác nhận con người cho vòng mới này.
 
 ## Chạy lại
 
